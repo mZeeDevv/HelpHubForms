@@ -1,0 +1,14 @@
+== Pages
+1) Header
+2) Profile
+3) forms
+4) About
+
+
+
+== Components for forms 
+1) Help & Support 
+2) Quality Education
+3) Affortable & Clean Energy
+4) Peace, Justice & Strong Instituion 
+5) Good Health & WELL-Being
