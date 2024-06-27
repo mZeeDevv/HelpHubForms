@@ -1,14 +1,25 @@
-import './App.css'
-import logotwo from './assets/logot.png'
-import { ToastContainer, toast } from 'react-toastify';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-function App() {
+import Profile from './Pages/Profile'
+import Forms from './Pages/Forms'
+import About from './Pages/About'
+import Header from './Components/Header'
+import './App.css'
 
+function App() {
+ 
   return (
     <>
-      <img width={130} src={logotwo} alt="logo" />
-     
-
+    <Router>
+      <Header/>
+      <Routes>
+      <Route path='/' element={<Forms/>}/>
+      <Route path='/profile' element={<Profile/>}/>
+      <Route path='/about' element={<About/>}/>
+      </Routes>
+    </Router>
 
 
 
