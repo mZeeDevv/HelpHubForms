@@ -33,7 +33,7 @@ export default function OAuth() {
        Navigate("/")
      }
    } catch (error) {
-    console.log(error)
+ 
    toast.error("Could not log in")
    }
      }
@@ -42,7 +42,7 @@ export default function OAuth() {
          <button type='button'
     onClick={onGoogleClick}
     className='flex justify-center items-center w-full bg-red-700 text-white uppercase
-    py-3 text-sm font-medium hover:bg-red-800 shadow-md hover:shadow-lg 
+    py-2 text-sm font-medium hover:bg-red-800 shadow-md hover:shadow-lg 
     transition duration-200 ease-in-out rounded'>
         <FcGoogle className='text-2xl bg-white rounded-full mr-2'/> Continue with Google
         </button>
