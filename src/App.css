@@ -2,11 +2,13 @@
 
 body {
     /* background-image: url('./assets/bg.jpeg'); */
-    background: 
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1)), /* Black gradient with opacity */
-    url('./assets/bg.jpeg'); /* Background image */
+    background-color: black;
     background-repeat: no-repeat;
    background-size: cover;
+   font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
 }
 
 .poppins-thin {
