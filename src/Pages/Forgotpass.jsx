@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import OAuth from '../Components/OAuth'
 export default function Forgotpass() {
   return (
-    <div className='max-w-4xl mx-auto my-2 bg-white rounded-md h-96'>
+    <div className='max-w-4xl mx-auto my-2 bg-[#FFF8F3] rounded-md h-96'>
     <h1 className='text-center text-2xl '>Sign In</h1>
    <div>
    <form

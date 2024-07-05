@@ -14,6 +14,7 @@ export default function Signup() {
     email: "",
     password: "",
     posts: 0,
+    level: 1,
   })
   const { name, email, password } = formData;
   function onChange(e) {
