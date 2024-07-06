@@ -8,6 +8,7 @@ import { doc, collection, getDoc, updateDoc } from 'firebase/firestore';
 export default function Showcasethread({threads, id}) {
    
     const [views, setViews ] = useState(null)
+    const [loading, setLoading] = useState(true)
     useEffect(() => {
      async function updateViews() {
         try {
@@ -39,13 +40,13 @@ export default function Showcasethread({threads, id}) {
     to={`/thread/${threads.option}/${id}`}
     onClick={onClick}
     >
-    <div className='flex justify-between'>
+    <div className='flex justify-between py-1'>
     <h1 className='font-semibold'>{threads.title}</h1>
-     <h1 className='font-semibold  text-gray-500'><span className='text-black'>Creator : </span> {threads.creator}</h1>
+     <h1 className='font-semibold  text-gray-500'><span className='text-black text-xs'>Creator : </span> {threads.creator}</h1>
      </div>
      <div className='flex space-x-5'>
-     <p className='text-sm text-gray-500 flex items-center space-x-1'><FaEye/><span>{threads.totalviews}</span></p>
-     <p className='text-sm text-gray-500 flex items-center space-x-1'><BiSolidConversation/><span>{threads.replies}</span></p>
+     <p className='text-xs text-gray-500 flex items-center space-x-1'><FaEye/><span>{threads.totalviews}</span></p>
+     <p className='text-xs text-gray-500 flex items-center space-x-1'><BiSolidConversation/><span>{threads.replies}</span></p>
      </div>
     </Link>
      </>

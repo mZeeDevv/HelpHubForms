@@ -13,7 +13,7 @@ export default function Createthread() {
     body: "",
     option: "Quality Education",
     time: serverTimestamp(),
-    views: 1,
+    totalviews: 1,
     replies: 0,
   })
 const {title, body, time, option} = formData;
@@ -33,7 +33,6 @@ const {title, body, time, option} = formData;
         console.log(error);
     }
   }
-  
 
     return (
         <div className='flex md:space-x-5 md:mx-3 flex-col-reverse md:flex-row mx-1'>

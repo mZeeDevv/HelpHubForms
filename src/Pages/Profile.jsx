@@ -51,7 +51,7 @@ const Navigate = useNavigate();
   }
 
    return (
-    <div className='max-w-4xl mx-auto my-2 bg-[#FFF8F3]rounded-md h-96'>
+    <div className='max-w-4xl mx-auto my-2 bg-[#FFF8F3] rounded-md h-96'>
     <h1 className='text-center text-2xl'>Profile</h1>
     <form
      className='flex flex-col max-w-lg mx-auto py-2 px-3'

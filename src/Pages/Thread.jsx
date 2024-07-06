@@ -6,9 +6,6 @@ import { FcHome } from 'react-icons/fc'
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import Spinner from '../Components/Spinner';
-
-
-
 export default function() {
 
     const pram = useParams();
