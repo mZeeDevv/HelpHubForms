@@ -13,6 +13,8 @@ export default function Createthread() {
     body: "",
     option: "Quality Education",
     time: serverTimestamp(),
+    views: 1,
+    replies: 0,
   })
 const {title, body, time, option} = formData;
   function onChange(e) {
