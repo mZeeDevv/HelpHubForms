@@ -6,10 +6,12 @@ import { FcHome } from 'react-icons/fc'
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import Spinner from '../Components/Spinner';
+import Profile from '../assets/Profile.png'
 export default function() {
 
     const pram = useParams();
     const [thread, setThread] = useState(null);
+    const [userInfo, setUserInfo] = useState(null) // SET IT WITH REPLIES SYSTEM
     const [loading, setLoading] = useState(true);
     
     useEffect(() => {
@@ -25,12 +27,13 @@ export default function() {
         getThread();
     }, [pram.threadId])
 
+   
     if(loading) {
        return <Spinner/>
     }
     const time = thread.time.toDate().toLocaleString();
     
-
+ console.log(thread.creator)
     return (
         <div className='flex md:space-x-5 md:mx-3 flex-col md:flex-row mx-1'>
             {/* div1 */}
@@ -38,10 +41,11 @@ export default function() {
             <h1 className='text-xl font-semibold'>{thread.title}</h1>
             <button className='bg-gray-300 px-2 py-1 rounded-sm hover:bg-gray-400  transition duration-500'><Link to='/' className='flex justify-center text-center items-center'><FcHome className='text-xl' /> Forums</Link></button>
              <div className=' flex space-x-2 my-2'>
-                <div className='md:w-[20%] bg-gray-200 items-center flex flex-col justify-center'>
-                    <p className='font-semibold'>{thread.creator}</p>
-                    <p className='flex  items-center text-gray-500 text-sm'> <MdArrowUpward/> Level 1</p>
-                    <p className='flex  items-center text-gray-500 text-sm'> <CiClock1/> {time} </p>
+                <div className='md:w-[20%] bg-gray-200 items-center flex flex-col md:justify-center'>
+                    <img src={Profile} alt="user" width={40} />
+                    <p className='font-semibold text-xs'>{thread.creator}</p>
+                    <p className='flex  items-center text-gray-500 text-xs '> <MdArrowUpward/> Level 1</p>
+                    <p className='flex  items-center text-gray-500 text-xs'> <CiClock1/> {time} </p>
                 </div>
                 <div className='w-[70%]'>
                     {thread.body}

@@ -1,39 +1,57 @@
-import { addDoc, collection, doc, serverTimestamp, setDoc, } from 'firebase/firestore';
-import React, { useState } from 'react'
+import { addDoc, collection, doc, getDoc, getDocs, serverTimestamp, setDoc, updateDoc, } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react'
 import { FcHome } from 'react-icons/fc'
 import { Link, useNavigate } from 'react-router-dom'
 import { db } from '../firebase';
 import { getAuth } from 'firebase/auth';
 export default function Createthread() {
- const auth = getAuth()
- const Navi = useNavigate();
-  const [formData, setFormData] = useState({
-    creator: auth.currentUser.displayName,
-    title: "",
-    body: "",
-    option: "Quality Education",
-    time: serverTimestamp(),
-    totalviews: 1,
-    replies: 0,
-  })
-const {title, body, time, option} = formData;
-  function onChange(e) {
-    setFormData((prevState) => ({
-        ...prevState,
-        [e.target.id]: e.target.value,
-      }))
-  }
-  
-  async function onSubmit(e) {
-    e.preventDefault();
-    try {
-       const docRef = await addDoc(collection(db, "threads"), formData);
-       Navi(`/thread/${formData.option}/${docRef.id}`)
-    } catch (error) {
-        console.log(error);
-    }
-  }
+    const auth = getAuth()
+    const Navi = useNavigate();
+   const [totalposts, setPosts] = useState(null)
 
+   useEffect(() => {
+    async function getUsersPosts() {
+        try {
+            const userPosts =  doc(db, "users", auth.currentUser.uid)
+            let posts = await getDoc(userPosts);
+            setPosts(posts.data())
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    getUsersPosts()
+   }, [])
+    const [formData, setFormData] = useState({
+        creator: auth.currentUser.displayName,
+        title: "",
+        body: "",
+        option: "Quality Education",
+        time: serverTimestamp(),
+        totalviews: 1,
+        replies: 0,
+    })
+    const { title, body, option } = formData;
+    function onChange(e) {
+        setFormData((prevState) => ({
+            ...prevState,
+            [e.target.id]: e.target.value,
+        }))
+    }
+    async function onSubmit(e) {
+        e.preventDefault();
+        try {
+            const docRef = await addDoc(collection(db, "threads"), formData);
+            let posts = totalposts.posts
+            posts++
+            const userPosts =  doc(db, "users", auth.currentUser.uid)
+            await updateDoc(userPosts, {
+                posts
+            })
+            Navi(`/thread/${formData.option}/${docRef.id}`)
+        } catch (error) {
+            console.log(error);
+        }
+    }
     return (
         <div className='flex md:space-x-5 md:mx-3 flex-col-reverse md:flex-row mx-1'>
             {/* div1 */}
@@ -41,24 +59,24 @@ const {title, body, time, option} = formData;
                 <h1 className='text-xl font-semibold'>Create new thread</h1>
                 <button className='bg-gray-300 px-2 py-1 rounded-sm hover:bg-gray-400  transition duration-500'><Link to='/' className='flex justify-center text-center items-center'><FcHome className='text-xl' /> Forums</Link></button>
                 <form onSubmit={onSubmit}>
-                <section>
-                    <h2 className='text-gray-700 font-semibold'>Thread title</h2>
-                    <input type="text" name="text" id="title" className='w-full py-1 px-2 bg-white border' onChange={onChange} value={title} />
-                    <div>
-                        <h2 className='text-gray-700 font-semibold'>Post</h2>
-                        <textarea className='w-full py-1 px-2 bg-white border' rows="5" id='body' onChange={onChange} value={body}></textarea>
+                    <section>
+                        <h2 className='text-gray-700 font-semibold'>Thread title</h2>
+                        <input type="text" name="text" id="title" className='w-full py-1 px-2 bg-white border' onChange={onChange} value={title} required />
+                        <div>
+                            <h2 className='text-gray-700 font-semibold'>Post</h2>
+                            <textarea className='w-full py-1 px-2 bg-white border' rows="5" id='body' onChange={onChange} value={body} required></textarea>
+                        </div>
+                    </section>
+                    <div className='flex flex-col'>
+                        <label htmlFor="option" className='text-gray-700 font-semibold'>Select thread section</label>
+                        <select name="select" id="option" className='py-2' onChange={onChange} value={option} required>
+                            <option>Quality Education</option>
+                            <option>Affordable and Clean Energy</option>
+                            <option>Peace, Justice, and Strong Institutions</option>
+                            <option>Good Health and Well-being</option>
+                        </select>
                     </div>
-                </section>
-               <div className='flex flex-col'>
-               <label htmlFor="option" className='text-gray-700 font-semibold'>Select thread section</label>
-                <select name="select" id="option" className='py-2' onChange={onChange} value={option}>
-                    <option>Quality Education</option>
-                    <option>Affordable and Clean Energy</option>
-                    <option>Peace, Justice, and Strong Institutions</option>
-                    <option>Good Health and Well-being</option>
-                </select>
-               </div>
-                <button className='bg-blue-700 text-white rounded-md px-3 py-2 text-center hover:bg-blue-600 transition duration-300 my-3'>Post</button>
+                    <button className='bg-blue-700 text-white rounded-md px-3 py-2 text-center hover:bg-blue-600 transition duration-300 my-3'>Post</button>
                 </form>
             </div>
 

@@ -28,7 +28,6 @@ export default function Showcasethread({threads, id}) {
      {
      let totalviews = views.totalviews;
       totalviews++;
-      console.log(totalviews)
       const docRef = doc(db, "threads", id);
       await updateDoc(docRef, {
         totalviews,
