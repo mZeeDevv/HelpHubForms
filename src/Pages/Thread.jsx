@@ -7,6 +7,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import Spinner from '../Components/Spinner';
 import Profile from '../assets/Profile.png'
+import Reply from '../Components/Reply'
 export default function() {
 
     const pram = useParams();
@@ -51,7 +52,11 @@ export default function() {
                     {thread.body}
                 </div>
              </div>
-
+             <div>
+                <Reply
+                id={pram.threadId}
+                />
+             </div>
             </div>
 
             {/* div2 */}
@@ -62,8 +67,6 @@ export default function() {
                     <button className='bg-white text-black rounded-md p-2 text-center'><Link to="/rules">Read</Link></button>
                 </section>
             </div>
-
-
         </div>
     )
 }

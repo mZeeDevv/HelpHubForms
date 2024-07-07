@@ -16,3 +16,7 @@
 
 == Databse 
 Person -> Name, email, Rank (for persmissions), timeStamp, posts,
+
+== Need to choose good cover photo
+== Adding reply section
+== Adding update of replies in the threads
