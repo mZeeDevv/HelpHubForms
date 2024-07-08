@@ -1,8 +1,13 @@
-# React + Vite
+# Help Hub 
+## Support Fourms
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The Help Hub project aims to provide comprehensive support and resources aligned with the United Nations' Sustainable Development Goals (SDGs), focusing on key areas including Health, Peace, Energy, and Education. This project serves as a centralized platform to facilitate access to information and assistance, fostering community engagement and empowerment.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Health:
+ Promote well-being and equitable healthcare access.
+### Peace:
+ Foster peaceful and inclusive societies, promoting justice and strong institutions.
+### Energy: 
+Advocate for affordable and clean energy solutions.
+### Education: 
+Enhance educational opportunities and quality for all.
