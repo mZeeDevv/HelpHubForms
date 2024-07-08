@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { FaHeart, FaLinkedin, FaInstagramSquare, FaGithub} from "react-icons/fa";
 
 export default function About() {
   return (
@@ -30,6 +31,20 @@ export default function About() {
  </p>
  <Link className='flex justify-center text-center' to="/newthread"><p className='bg-blue-700 rounded-sm text-white font-semibold px-3 py-2'>Create a thread and Let us help you</p></Link>
 </div>
+<div className='bg-[#FFF8F3] flex justify-center py-6 flex-col items-center space-y-3 mt-3'>
+        <p className='flex items-center space-x-1'><span>Created by </span><a href="https://mzee.dev/" className='underline'> Hamza Khattak </a> <span>with </span> <FaHeart className='text-red-600'/></p>
+           <div className='flex space-x-4 text-3xl'>
+           <a href="https://www.linkedin.com/in/mzeedev/">
+        <FaLinkedin/>
+           </a>
+           <a href="https://www.instagram.com/mzeedev/">
+        <FaInstagramSquare/>
+           </a>
+           <a href="https://github.com/mZeeDevv">
+        <FaGithub />
+           </a>
+           </div>
+    </div>
    </>
   )
 }

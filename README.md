@@ -11,3 +11,8 @@ The Help Hub project aims to provide comprehensive support and resources aligned
 Advocate for affordable and clean energy solutions.
 ### Education: 
 Enhance educational opportunities and quality for all.
+
+### Impact (Looking for)
+Beneficiaries: Engaged diverse stakeholders, including communities, NGOs, and policymakers.
+Sustainability: Explored avenues for sustained impact through partnerships and continuous improvement.
+Feedback: Positive feedback on the platform's usability and the relevance of provided resources.

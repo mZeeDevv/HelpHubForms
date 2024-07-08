@@ -10,6 +10,8 @@ import Profile from '../assets/Profile.png'
 import Reply from '../Components/Reply'
 import User from '../Components/User'
 import { toast } from 'react-toastify';
+import { FaHeart, FaLinkedin, FaInstagramSquare, FaGithub} from "react-icons/fa";
+
 export default function () {
 
     const pram = useParams();
@@ -61,6 +63,7 @@ export default function () {
     }
     const time = thread.time.toDate().toLocaleString();
     return (
+       <>
         <div className='flex md:space-x-5 md:mx-3 flex-col md:flex-row mx-1'>
             {/* div1 */}
             <div className='md:w-[70%] my-2 bg-[#FFF8F3] p-3'>
@@ -101,10 +104,26 @@ export default function () {
                     />
                 </div>
             </div>
-            {/* div2 */}
             <div className=' md:w-[30%] md:my-2 bg-transparent flex flex-col'>
                 <User />
             </div>
         </div>
+        <div className='bg-[#FFF8F3] flex justify-center py-6 flex-col items-center space-y-3 mt-3'>
+        <p className='flex items-center space-x-1'><span>Created by </span><a href="https://mzee.dev/" className='underline'> Hamza Khattak </a> <span>with </span> <FaHeart className='text-red-600'/></p>
+           <div className='flex space-x-4 text-3xl'>
+           <a href="https://www.linkedin.com/in/mzeedev/">
+        <FaLinkedin/>
+           </a>
+           <a href="https://www.instagram.com/mzeedev/">
+        <FaInstagramSquare/>
+           </a>
+           <a href="https://github.com/mZeeDevv">
+        <FaGithub />
+           </a>
+           </div>
+    </div>
+       </>
+
+        
     )
 }
