@@ -9,6 +9,7 @@ export default function Showcasethread({threads, id}) {
    
     const [views, setViews ] = useState(null)
     const [loading, setLoading] = useState(true)
+    
     useEffect(() => {
      async function updateViews() {
         try {

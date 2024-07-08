@@ -197,7 +197,7 @@ export default function Forms() {
             <p className='text-xs py-2 text-center justify-center flex'><Link to='/threads/health' className='text-center flex items-center'><span>More threads</span><RiArrowDownSLine className='text-red-600 font-bold text-lg'/></Link></p>
           </div>
         </div>
-        <div className=' md:w-[30%] md:my-2 bg-[#FFF8F3] flex flex-col'>
+        <div className=' md:w-[30%] md:my-2 bg-tranparent flex flex-col'>
           <User />
         </div>
       </div>

@@ -1,12 +1,10 @@
  import React from 'react'
  import { getAuth, updateProfile } from "firebase/auth"
-import { useEffect, useState, } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import {  useState, } from "react"
+import {  useNavigate } from "react-router-dom"
 import { toast } from "react-toastify";
 import { db } from "../firebase";
-import { collection, getDocs, orderBy, query, updateDoc, where } from "firebase/firestore";
-import {FcHome} from "react-icons/fc"
-import Spinner from "../Components/Spinner";
+import { updateDoc,  doc } from "firebase/firestore";
 
  export default function Profile() {
 const Navigate = useNavigate();
@@ -39,13 +37,14 @@ const Navigate = useNavigate();
         displayName : name,
       });
       //updating name in firestore  
-      const docRef = db("users", auth.currentUser.uid)
+      const docRef = doc(db, "users", auth.currentUser.uid)
       await updateDoc(docRef, {
         name,
       })
     }
     toast.success('Profile details updated')
    } catch (error) {
+    console.log(error)
     toast.error("Could not update profile details")
    }
   }

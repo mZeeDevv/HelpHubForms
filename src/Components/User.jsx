@@ -28,9 +28,6 @@ export default function User() {
      }
      getUsers()
   }, [])
-
- 
-
   return (
     <>
      <section className='space-y-3 p-3 bg-blue-500 text-white'>
@@ -38,8 +35,7 @@ export default function User() {
      <p className=''>Read Forum rules before posting!</p>
      <button className='bg-white text-black rounded-md p-2 text-center'><Link to="/rules">Read</Link></button>
      </section>
-
-     <div>
+     <div className='bg-[#FFF8F3] pb-11'>
      <h1 className='text-xl font-semibold text-center my-2'>Top Fourm Posters</h1>
      <div className='flex justify-between p-2'>
       <p className='font-semibold'>Name</p>

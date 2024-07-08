@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import { db } from "../firebase"
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import Spinner from './Spinner';
-import { addDoc, collection, doc, serverTimestamp } from 'firebase/firestore';
+import { addDoc, collection, doc, serverTimestamp, updateDoc, getDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 
-export default function Reply() {
+export default function Reply({totalreplies}) {
+    const navi = useNavigate()
     const pram = useParams()
     const auth = getAuth();
     const [login, setLogin] = useState(false)
     const [loading, setLoading] = useState(true)
+    const [totalposts, setPosts] = useState(null)
+    
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setLogin(true)
-                setLoading(false)
             }
         })
     },)
@@ -31,6 +33,17 @@ export default function Reply() {
                 creator: auth.currentUser.uid
             }));
         }
+        async function getUsersPosts() {
+            try {
+                const userPosts =  doc(db, "users", auth.currentUser.uid)
+                let posts = await getDoc(userPosts);
+                setPosts(posts.data())
+                setLoading(false)
+            } catch (error) {
+                toast.error(error)
+            }
+        }
+        getUsersPosts()
     }, [auth.currentUser]);
 
     const { body } = formData;
@@ -46,7 +59,19 @@ export default function Reply() {
             const threadDocRef = doc(db, "threads", pram.threadId)
             const repliesCollectionRef = collection(threadDocRef, "replies");
             const newReplyDocRef = await addDoc(repliesCollectionRef, formData);
+            let replies = totalreplies; //to update thread total replies for showwcasethread
+            replies++;
+            await updateDoc(threadDocRef, {
+                replies,
+              })
+              let posts = totalposts.posts
+              posts++
+              const userPosts =  doc(db, "users", auth.currentUser.uid) 
+              await updateDoc(userPosts, { //to update posts in userprofile with new post
+                  posts
+              })
             toast.success("You reply has been added")
+            window.location.reload();
         } catch (error) {
             console.log(error)
         }
