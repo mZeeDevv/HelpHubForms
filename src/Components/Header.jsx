@@ -6,11 +6,13 @@ export default function Header() {
   return (
     <>
       <nav className=' lg:p-2 flex items-center poppins-regular justify-between md:shadow-lg bg-[#FFF8F3] shadow-sm'>
+        <Link to='/'>
         <img 
         width={80}
         src={logotwo} 
         alt="logo" 
         />
+        </Link>
         <ul className='flex space-x-3 mr-3 lg:flex text-[#151515] font-semibold'>
         <li><Link to='/'>Forums</Link></li>
         <li><Link to='/about'>Our Motive</Link></li>
