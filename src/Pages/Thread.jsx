@@ -18,15 +18,15 @@ export default function () {
     const [thread, setThread] = useState(null);
     const [userInfo, setUserInfo] = useState(null) // SET IT WITH REPLIES SYSTEM
     const [loading, setLoading] = useState(true);
-    const [replies, setreplies] = useState(null)
+    const [replies, setreplies] = useState(null) //For fetching whole thread reply
 
     useEffect(() => {
         async function getThread() {
-            const docRef = doc(db, "threads", pram.threadId);
+            const docRef = doc(db, "threads", pram.threadId); 
             const replyDocRef = collection(docRef, "replies")
             const q = query(replyDocRef, orderBy("time", "asc"))
-            const replydoc = await getDocs(q);
-            const docSnap = await getDoc(docRef);
+            const replydoc = await getDocs(q); // Get all the replies
+            const docSnap = await getDoc(docRef); // Used to get thread creator/views/replies
             const repliesArray = [];
             replydoc.forEach(doc => {
                 repliesArray.push(doc.data());
@@ -44,15 +44,14 @@ export default function () {
             try {
                 const userInfos = await Promise.all(
                     replies.map(async (reply) => {
-                        const docRef = doc(db, "users", reply.creator);
+                        const docRef = doc(db, "users", reply.creator); //To fetch user data (the one who created the thread)
                         const snap = await getDoc(docRef);
-                        return snap.data(); // Adjust this based on how you want to store user info
+                        return snap.data(); 
                     })
                 );
                 setUserInfo(userInfos);
                 setLoading(false)
             } catch (error) {
-                // console.log(error);
                 toast.error(error)
             }
         }
@@ -61,7 +60,7 @@ export default function () {
     if (loading) {
         return <Spinner />
     }
-    const time = thread.time.toDate().toLocaleString();
+    const time = thread.time.toDate().toLocaleString(); // to set the timestamp to localstring
     return (
        <>
         <div className='flex md:space-x-5 md:mx-3 flex-col md:flex-row mx-1'>

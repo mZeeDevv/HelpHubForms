@@ -79,17 +79,6 @@ export default function Createthread() {
                     <button className='bg-blue-700 text-white rounded-md px-3 py-2 text-center hover:bg-blue-600 transition duration-300 my-3'>Post</button>
                 </form>
             </div>
-
-
-
-
-
-
-
-
-
-
-            {/* div2 */}
             <div className=' md:w-[30%] my-2 bg-transparent flex flex-col '>
                 <section className='space-y-3 p-3 bg-blue-500 text-white'>
                     <h1 className='text-xl font-semibold'>Forum rules</h1>
@@ -97,8 +86,6 @@ export default function Createthread() {
                     <button className='bg-white text-black rounded-md p-2 text-center '><Link to="/rules">Read</Link></button>
                 </section>
             </div>
-
-
         </div>
     )
 }

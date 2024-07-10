@@ -12,7 +12,7 @@ export default function User() {
     async function getUsers(){
       try {
         const docRef = collection(db, "users")
-        const querySnap = await getDocs(docRef, orderBy("posts", "asc"), limit(10))
+        const querySnap = await getDocs(query(docRef, orderBy("posts", "desc"), limit(10)));
         const topusers = []
        querySnap.forEach((doc) => {
          topusers.push({

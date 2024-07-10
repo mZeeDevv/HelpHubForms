@@ -16,7 +16,6 @@ import Energy from './Pages/Forms/Energy'
 import Health from './Pages/Forms/Health'
 import Justice from './Pages/Forms/Justice'
 import Createthread from './Pages/Createthread';
-import Footer from './Components/Footer'
 import Header from './Components/Header'
 import './App.css'
 
@@ -45,17 +44,7 @@ function App() {
       <Route path='/forgotpassword' element={<Forgotpass/>}/>
       <Route path='/thread/:option/:threadId' element={<Thread/>}/>
       </Routes>
-      {/* <Footer/> */}
-
     </Router>
-
-
-
-
-
-
-
-     
       <ToastContainer
         position="bottom-center"
         autoClose={5000}
@@ -71,5 +60,4 @@ function App() {
     </>
   )
 }
-
 export default App
